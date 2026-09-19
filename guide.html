@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Setup guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#14181d;
+    --body:#2b333c;
+    --muted:#5c6672;
+    --ground:#f6f7f9;
+    --surface:#ffffff;
+    --rule:#dfe4ea;
+    --accent:#0f6b62;
+    --accent-soft:#e6f1ef;
+    --mark:#b45309;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#eef2f6;
+      --body:#c6ced7;
+      --muted:#8d97a3;
+      --ground:#12161a;
+      --surface:#181d23;
+      --rule:#2a323b;
+      --accent:#5ec5b6;
+      --accent-soft:#12302d;
+      --mark:#e0a35c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#eef2f6;
+    --body:#c6ced7;
+    --muted:#8d97a3;
+    --ground:#12161a;
+    --surface:#181d23;
+    --rule:#2a323b;
+    --accent:#5ec5b6;
+    --accent-soft:#12302d;
+    --mark:#e0a35c;
+  }
+
+  body{
+    background:var(--ground);
+    color:var(--body);
+    font-family:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    font-size:16px;
+    line-height:1.62;
+    padding-inline:20px;
+    padding-block:0 72px;
+  }
+  .wrap{max-width:660px;margin-inline:auto;}
+
+  header.head{
+    padding-block:56px 28px;
+    border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-weight:600;font-size:clamp(28px,5vw,38px);line-height:1.15;
+    color:var(--ink);margin:0;text-wrap:balance;letter-spacing:-.01em;
+  }
+  .meta{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;
+  }
+
+  .summary{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    padding:18px 20px;
+    margin-block:32px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .summary p{margin:0;}
+  .summary strong{color:var(--ink);font-weight:600;}
+
+  section{padding-block:26px 0;}
+  h2{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:19px;font-weight:600;color:var(--ink);
+    margin:0 0 10px;letter-spacing:-.005em;
+    display:flex;gap:12px;align-items:baseline;
+  }
+  h2 .num{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--accent);font-weight:500;
+    flex:0 0 auto;padding-top:2px;
+  }
+  h3{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:15px;font-weight:600;color:var(--ink);margin:20px 0 6px;
+  }
+  p{margin:0 0 12px;}
+  ul{margin:0 0 12px;padding-left:20px;}
+  li{margin-bottom:6px;}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px;}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
+  code{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:.86em;background:var(--accent-soft);color:var(--ink);
+    padding:1px 5px;border-radius:3px;
+  }
+
+  .tablewrap{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--rule);background:var(--surface);}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;background:var(--ground);
+  }
+  tr:last-child td{border-bottom:none;}
+  td:first-child{color:var(--ink);font-weight:500;white-space:nowrap;}
+
+  .note{font-size:14px;color:var(--muted);font-style:italic;}
+  footer{
+    margin-top:42px;padding-top:20px;border-top:1px solid var(--rule);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;
+  }
+</style>
+<style>
+  ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:22px}
+  ol.steps > li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start}
+  ol.steps > li:before{content:counter(s);width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;
+    display:grid;place-items:center;font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600}
+  ol.steps h3{margin:2px 0 6px}
+  ol.steps p{margin:0 0 8px}
+  .callout{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--mark);padding:14px 16px;margin:14px 0}
+  .callout b{color:var(--ink)}
+  .price{background:var(--accent-soft);border:1px solid var(--rule);padding:18px 20px;margin:20px 0;display:grid;gap:8px}
+  .price .big{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:30px;font-weight:600;color:var(--ink)}
+  .price ul{margin:0;padding-left:20px}
+  table.tro td:first-child{white-space:normal;width:38%}
+</style>
+
+<style>
+  .sitenav{display:flex;flex-wrap:wrap;gap:6px 18px;padding-block:20px 0;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px}
+  .sitenav a{color:var(--muted);text-decoration:none}
+  .sitenav a:hover{color:var(--accent);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="sitenav">
+    <a href="./">Home</a><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a><a href="./guide.html" aria-current="page">Setup guide</a>
+  </nav>
+  <header class="head">
+    <span class="eyebrow">Chrome extension &middot; Setup guide</span>
+    <h1>Zillow Export &amp; Agent Export - Name Phone Email</h1>
+    <div class="meta">
+      <span>From a fresh install to your first email</span>
+      <span>About 10 minutes</span>
+    </div>
+  </header>
+
+  <div class="summary">
+    <p><strong>What this does.</strong> You run a search on Zillow. The extension reads every listing on it and gives you the listing agent's name, phone number and a working email address, then exports the list or emails the agents for you from your own Gmail.</p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span>Collecting your first list</h2>
+    <ol class="steps">
+      <li><div>
+        <h3>Install and pin it</h3>
+        <p>Add the extension from the Chrome Web Store. Click the puzzle icon in Chrome's toolbar and pin it, so it is always one click away.</p>
+      </div></li>
+      <li><div>
+        <h3>Connect your Google account</h3>
+        <p>Open the extension and press <b>Connect Google</b> on the first card. Two things depend on it: your free 30 listings are counted against your account, and the results are written into a Sheet in your own Drive. The extension can only open files it creates itself, nothing else in your Drive.</p>
+      </div></li>
+      <li><div>
+        <h3>Search on Zillow the way you normally would</h3>
+        <p>A city, a ZIP code, filters, whatever you like. Keep that tab open. If the search shows more than 820 results, Zillow itself will not serve more than that, so narrow it down by ZIP or by price range.</p>
+      </div></li>
+      <li><div>
+        <h3>Choose what to collect, then press Start</h3>
+        <p><b>Listings</b> is address, price and brokerage, and takes a minute or two. <b>+ Phone</b> opens each listing for the agent's name and phone. <b>+ Email</b> also finds the agent on Zillow and keeps the email only when the phone matches the listing, which is what makes the addresses trustworthy. Leave the tab open while it runs. The map is locked during collection and free again after.</p>
+      </div></li>
+      <li><div>
+        <h3>Read the results</h3>
+        <p>Each row is one listing, with the contact behind it. A few rows will show <b>several addresses at once</b>, with a count like "+17 more" next to them. Those are apartment buildings: the listing is the whole building, and every apartment in it is rented out by a different agent, so the row keeps all of them. Hover the small <b>i</b> for that explanation in the panel, press the count to open the full list, and <b>Copy all</b> to take the addresses out as one comma separated line.</p>
+      </div></li>
+      <li><div>
+        <h3>Export</h3>
+        <p><b>Export</b> at the bottom sends the list to a Google Sheet in your Drive, or downloads it as Excel or CSV. A row with several agents puts them all in the <b>Agent Email(s)</b> cell, separated by a semicolon.</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>Emailing the agents, optional</h2>
+    <ol class="steps">
+      <li><div>
+        <h3>Open Settings, Email sender</h3>
+        <p>Fill in your name and phone. They go into the letter of intent and the signature.</p>
+      </div></li>
+      <li><div>
+        <h3>Create your sender sheet</h3>
+        <p>Press <b>New sheet</b>. The extension builds it in your Drive with the Leads, CRM, Dashboard, Campaigns and Templates tabs, and creates your letter of intent as a Google Doc you can edit.</p>
+      </div></li>
+      <li><div>
+        <h3>Install the sender inside that sheet</h3>
+        <p>Press <b>How</b> next to "Sender in the sheet" and follow the six steps: copy the code, open the sheet, Extensions, Apps Script, paste over everything, add the Gmail service, Save, choose <b>setupSheets</b> and Run.</p>
+        <div class="callout">
+          <p><b>Google will say "Google hasn't verified this app".</b> That is expected, and it is about <b>your own script</b>, in <b>your own account</b>, that you just pasted in yourself. Press <b>Advanced</b>, then <b>Go to the project</b>, then <b>Allow</b>. Nobody else can see or use it.</p>
+        </div>
+      </div></li>
+      <li><div>
+        <h3>Write a campaign</h3>
+        <p>In the Email tab, press <b>New</b>, name it, set your offer terms, write a subject and a message, and add follow-ups if you want them. Variables like <code>{{Agent First Name}}</code> and <code>{{ShortAddress}}</code> are filled per agent.</p>
+      </div></li>
+      <li><div>
+        <h3>Pick agents and send</h3>
+        <p>In Results, tick the agents you want, or press <b>Select all</b>, choose the campaign and press <b>Add to campaign</b>. Then open the sheet, menu <b>Email Sender</b>, <b>Start sending</b>. One email leaves about every minute from your own Gmail, and a sequence stops by itself the moment an agent replies.</p>
+        <p class="note">A row that holds several agents from one building gets <b>one shared message</b> addressed to all of them, not one email each. If you would rather not write to a whole building at once, remove the addresses you do not want from the cell before you add the row to a campaign. In a template, <code>{{Agent Email}}</code> is the first address, <code>{{All Agent Emails}}</code> is the whole list and <code>{{Agent Count}}</code> is how many there are.</p>
+      </div></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>What it costs</h2>
+    <div class="price">
+      <span class="big">30 listings free, then $33 a month</span>
+      <ul>
+        <li>The 30 cover everything: collecting, exporting and sending.</li>
+        <li>A listing is counted once, ever, the first time you collect it. Re-exporting or emailing it again is free.</li>
+        <li>After that, one price. No credits, no charge per lead, no charge per email, no seats, no bigger plan.</li>
+        <li>Cancel in PayPal whenever you want.</li>
+      </ul>
+    </div>
+    <p>If you paid with a different PayPal email, open Settings, Subscription, <b>Already paid?</b> and paste that email, or the subscription ID from your PayPal receipt, which starts with I-.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>When something looks wrong</h2>
+    <div class="tablewrap">
+      <table class="tro">
+        <thead><tr><th>What you see</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr><td>Zillow asks for a CAPTCHA and the run pauses</td><td>Solve it in the Zillow tab, raise the delay in Settings to 2000 ms, then press Resume.</td></tr>
+          <tr><td>Agents found, but no email</td><td>Not every agent publishes one. In Settings, turn on <b>Open brokerage websites</b> so the extension may also look at the agent or brokerage site the listing links to.</td></tr>
+          <tr><td>"Reload the Zillow tab"</td><td>The page was open before the extension loaded. Refresh it once.</td></tr>
+          <tr><td>Sending stopped by itself</td><td>Either everything was sent, the daily Gmail limit was reached and it continues tomorrow, or the free 30 are used. The sheet's Dashboard says which.</td></tr>
+          <tr><td>A row says "No email"</td><td>That agent has no address, so it is parked and skipped. It never holds up the queue.</td></tr>
+          <tr><td>A message at the end of a run about two different numbers</td><td>Zillow counts homes, we collect listings, and one listing can hold several apartments. Nothing was missed, the two numbers just count different things.</td></tr>
+          <tr><td>One row shows many email addresses</td><td>It is an apartment building. Every apartment there is listed by a different agent, and all of them are kept. They receive one shared message.</td></tr>
+          <tr><td>"Zillow Export was updated, refresh this tab"</td><td>The extension was updated while that tab was open. Press Refresh on the note, or reload the tab. Nothing you collected is lost.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <span>Or Habusha, Eilat, Israel</span>
+    <span>orhavusha01@gmail.com</span>
+  </footer>
+</div>
+</body>
+</html>

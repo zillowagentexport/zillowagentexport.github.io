@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Terms of service</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#14181d;
+    --body:#2b333c;
+    --muted:#5c6672;
+    --ground:#f6f7f9;
+    --surface:#ffffff;
+    --rule:#dfe4ea;
+    --accent:#0f6b62;
+    --accent-soft:#e6f1ef;
+    --mark:#b45309;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#eef2f6;
+      --body:#c6ced7;
+      --muted:#8d97a3;
+      --ground:#12161a;
+      --surface:#181d23;
+      --rule:#2a323b;
+      --accent:#5ec5b6;
+      --accent-soft:#12302d;
+      --mark:#e0a35c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#eef2f6;
+    --body:#c6ced7;
+    --muted:#8d97a3;
+    --ground:#12161a;
+    --surface:#181d23;
+    --rule:#2a323b;
+    --accent:#5ec5b6;
+    --accent-soft:#12302d;
+    --mark:#e0a35c;
+  }
+
+  body{
+    background:var(--ground);
+    color:var(--body);
+    font-family:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    font-size:16px;
+    line-height:1.62;
+    padding-inline:20px;
+    padding-block:0 72px;
+  }
+  .wrap{max-width:660px;margin-inline:auto;}
+
+  header.head{
+    padding-block:56px 28px;
+    border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-weight:600;font-size:clamp(28px,5vw,38px);line-height:1.15;
+    color:var(--ink);margin:0;text-wrap:balance;letter-spacing:-.01em;
+  }
+  .meta{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;
+  }
+
+  .summary{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    padding:18px 20px;
+    margin-block:32px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .summary p{margin:0;}
+  .summary strong{color:var(--ink);font-weight:600;}
+
+  section{padding-block:26px 0;}
+  h2{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:19px;font-weight:600;color:var(--ink);
+    margin:0 0 10px;letter-spacing:-.005em;
+    display:flex;gap:12px;align-items:baseline;
+  }
+  h2 .num{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--accent);font-weight:500;
+    flex:0 0 auto;padding-top:2px;
+  }
+  h3{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:15px;font-weight:600;color:var(--ink);margin:20px 0 6px;
+  }
+  p{margin:0 0 12px;}
+  ul{margin:0 0 12px;padding-left:20px;}
+  li{margin-bottom:6px;}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px;}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
+  code{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:.86em;background:var(--accent-soft);color:var(--ink);
+    padding:1px 5px;border-radius:3px;
+  }
+
+  .tablewrap{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--rule);background:var(--surface);}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;background:var(--ground);
+  }
+  tr:last-child td{border-bottom:none;}
+  td:first-child{color:var(--ink);font-weight:500;white-space:nowrap;}
+
+  .note{font-size:14px;color:var(--muted);font-style:italic;}
+  footer{
+    margin-top:42px;padding-top:20px;border-top:1px solid var(--rule);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;
+  }
+</style>
+
+<style>
+  .sitenav{display:flex;flex-wrap:wrap;gap:6px 18px;padding-block:20px 0;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px}
+  .sitenav a{color:var(--muted);text-decoration:none}
+  .sitenav a:hover{color:var(--accent);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="sitenav">
+    <a href="./">Home</a><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a><a href="./guide.html">Setup guide</a>
+  </nav>
+  <header class="head">
+    <span class="eyebrow">Chrome extension &middot; Terms of service</span>
+    <h1>Zillow Export &amp; Agent Export - Name Phone Email</h1>
+    <div class="meta">
+      <span>Effective 19 September 2026</span>
+      <span>Contact: orhavusha01@gmail.com</span>
+    </div>
+  </header>
+
+  <div class="summary">
+    <p><strong>The short version.</strong> You may use the extension to collect publicly listed contact details and to write to those people from your own email account. You are responsible for what you send. We charge one price, you can cancel any time, and neither of us promises the other anything beyond what is written here.</p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span>Who these terms are between</h2>
+    <p>These terms cover the Chrome extension "Zillow Export &amp; Agent Export - Name Phone Email" and the Google Sheets sending engine it installs in your own Google account. Both are operated by Or Habusha, Eilat, Israel. Using the extension means you accept these terms.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>What you may do with it</h2>
+    <ul>
+      <li>Collect the contact details that listings you open publish themselves, and export them.</li>
+      <li>Write to those contacts about the properties they have listed, from your own email account.</li>
+      <li>Use the results for your own business. The data you collect is yours.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>What you may not do</h2>
+    <ul>
+      <li>Send messages that break the rules that apply where you and the recipient are, including CAN-SPAM in the United States. Every message must carry a real mailing address and a working way to opt out.</li>
+      <li>Keep writing to anyone who has asked you to stop. The engine keeps an Opt Outs list and never writes to an address on it again; do not work around it.</li>
+      <li>Resell the collected contacts as a data product, or build a contact database for sale.</li>
+      <li>Share your licence with another person or business. One subscription is one user.</li>
+      <li>Take the extension apart, republish it, or use it to break the terms of any site it reads.</li>
+    </ul>
+    <p>An account used for any of the above may be closed without a refund.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Price, billing and cancelling</h2>
+    <ul>
+      <li>The first 30 listings are free and cover everything: collecting, exporting and sending. A listing is counted once, ever, the first time it is collected.</li>
+      <li>After that the price is 33 USD a month, one price, with no credits, no charge per lead, no charge per email and no seats.</li>
+      <li>Payment is handled by PayPal on a recurring subscription. It renews every month until you cancel.</li>
+      <li>You can cancel at any time inside PayPal. Access stays open to the end of the period you have already paid for.</li>
+      <li>There is no automatic refund for a period already started. If something on our side stopped working and you paid for it, write to us and we will make it right.</li>
+      <li>If the price changes, the change applies from your next renewal and you are told before it takes effect.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Your Google account and your own sending</h2>
+    <p>The extension writes results into a spreadsheet in your own Drive and can only open the files it creates itself. The sending engine runs inside that spreadsheet, under a script you install yourself, so every email leaves from your own Gmail address and appears in your own Sent folder. We never send on your behalf and we never hold a copy of your mailbox or your contacts. Your Google account's own sending limits apply, and reaching them is not a fault of the product.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>What we do not promise</h2>
+    <p>The extension reads pages published by other companies that we do not control. Those pages change, and when they do a step may return less than it did before. We do not promise that any particular listing will yield an email, that a given address is current or deliverable, or that the sites it reads will remain available. The product is provided as it is, without a warranty of fitness for a particular purpose.</p>
+    <p>Our total liability to you for any claim is limited to what you paid us in the twelve months before the claim. We are not liable for lost business, lost profit or the consequences of messages you chose to send.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>Stopping</h2>
+    <p>You can stop at any time: cancel in PayPal, remove the extension, and delete the spreadsheet. Ask us to delete your licence record and it is removed within 30 days. We may stop serving an account that breaks section 03, or withdraw the product entirely, in which case any period you have paid for and not used is refunded.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span>Changes and law</h2>
+    <p>If these terms change, the effective date at the top changes with it, and a change that affects what you pay or what you may do is announced in the extension before it takes effect. These terms are governed by the law of Israel.</p>
+  </section>
+
+  <footer>
+    <span>Or Habusha, Eilat, Israel</span>
+    <span>orhavusha01@gmail.com</span>
+  </footer>
+</div>
+
+</body>
+</html>

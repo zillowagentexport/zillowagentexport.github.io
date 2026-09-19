@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zillow Export Privacy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#14181d;
+    --body:#2b333c;
+    --muted:#5c6672;
+    --ground:#f6f7f9;
+    --surface:#ffffff;
+    --rule:#dfe4ea;
+    --accent:#0f6b62;
+    --accent-soft:#e6f1ef;
+    --mark:#b45309;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#eef2f6;
+      --body:#c6ced7;
+      --muted:#8d97a3;
+      --ground:#12161a;
+      --surface:#181d23;
+      --rule:#2a323b;
+      --accent:#5ec5b6;
+      --accent-soft:#12302d;
+      --mark:#e0a35c;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#eef2f6;
+    --body:#c6ced7;
+    --muted:#8d97a3;
+    --ground:#12161a;
+    --surface:#181d23;
+    --rule:#2a323b;
+    --accent:#5ec5b6;
+    --accent-soft:#12302d;
+    --mark:#e0a35c;
+  }
+
+  body{
+    background:var(--ground);
+    color:var(--body);
+    font-family:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+    font-size:16px;
+    line-height:1.62;
+    padding-inline:20px;
+    padding-block:0 72px;
+  }
+  .wrap{max-width:660px;margin-inline:auto;}
+
+  header.head{
+    padding-block:56px 28px;
+    border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-weight:600;font-size:clamp(28px,5vw,38px);line-height:1.15;
+    color:var(--ink);margin:0;text-wrap:balance;letter-spacing:-.01em;
+  }
+  .meta{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;
+  }
+
+  .summary{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--accent);
+    padding:18px 20px;
+    margin-block:32px;
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .summary p{margin:0;}
+  .summary strong{color:var(--ink);font-weight:600;}
+
+  section{padding-block:26px 0;}
+  h2{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:19px;font-weight:600;color:var(--ink);
+    margin:0 0 10px;letter-spacing:-.005em;
+    display:flex;gap:12px;align-items:baseline;
+  }
+  h2 .num{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:12px;color:var(--accent);font-weight:500;
+    flex:0 0 auto;padding-top:2px;
+  }
+  h3{
+    font-family:"IBM Plex Sans",system-ui,sans-serif;
+    font-size:15px;font-weight:600;color:var(--ink);margin:20px 0 6px;
+  }
+  p{margin:0 0 12px;}
+  ul{margin:0 0 12px;padding-left:20px;}
+  li{margin-bottom:6px;}
+  a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px;}
+  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px;}
+  code{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:.86em;background:var(--accent-soft);color:var(--ink);
+    padding:1px 5px;border-radius:3px;
+  }
+
+  .tablewrap{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--rule);background:var(--surface);}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;}
+  th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--rule);vertical-align:top;}
+  th{
+    font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;background:var(--ground);
+  }
+  tr:last-child td{border-bottom:none;}
+  td:first-child{color:var(--ink);font-weight:500;white-space:nowrap;}
+
+  .note{font-size:14px;color:var(--muted);font-style:italic;}
+  footer{
+    margin-top:42px;padding-top:20px;border-top:1px solid var(--rule);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px;color:var(--muted);
+    display:flex;flex-wrap:wrap;gap:6px 20px;justify-content:space-between;
+  }
+</style>
+
+<style>
+  .sitenav{display:flex;flex-wrap:wrap;gap:6px 18px;padding-block:20px 0;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px}
+  .sitenav a{color:var(--muted);text-decoration:none}
+  .sitenav a:hover{color:var(--accent);text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="sitenav">
+    <a href="./">Home</a><a href="./privacy.html" aria-current="page">Privacy</a><a href="./terms.html">Terms</a><a href="./guide.html">Setup guide</a>
+  </nav>
+  <header class="head">
+    <span class="eyebrow">Chrome extension &middot; Privacy policy</span>
+    <h1>Zillow Export &amp; Agent Export - Name Phone Email</h1>
+    <div class="meta">
+      <span>Effective 19 September 2026</span>
+      <span>Version 2.33</span>
+      <span>Contact: orhavusha01@gmail.com</span>
+    </div>
+  </header>
+
+  <div class="summary">
+    <p><strong>The short version.</strong> The listings and agent details you collect stay in your browser and in the Google Sheet you own. Emails are sent from your own Gmail account, never from our servers. We do not sell your data and we do not keep a copy of the agents you find.</p>
+    <p><strong>What changed in this version.</strong> For rentals posted by an apartment building or a management company, the extension now also looks the property up by its street address on public property pages, and a building row can hold several agent addresses instead of one. Sections 04 and 07 say exactly what that means.</p>
+    <p>The only thing we store on our side is the email address of your Google account, so we know whether your subscription is active and how many of your 30 free listings you have used.</p>
+  </div>
+
+  <section>
+    <h2><span class="num">01</span>Who this covers</h2>
+    <p>This policy covers the Chrome extension “Zillow Export &amp; Agent Export - Name Phone Email” and the Google Sheets sending engine it installs in your own Google account. Both are operated by Or Habusha, Eilat, Israel.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">02</span>What is collected, and where it lives</h2>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Data</th><th>Why</th><th>Where it is stored</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Listing and agent details</td>
+            <td>The result list: address, price, agent name, phone, email and how that email was verified</td>
+            <td>Your browser, and the Google Sheet in your own Drive</td>
+          </tr>
+          <tr>
+            <td>Google account email</td>
+            <td>Identifies your licence: trial count, subscription status</td>
+            <td>Our licence sheet, in our own Google account</td>
+          </tr>
+          <tr>
+            <td>Listing counter</td>
+            <td>Counts a listing once, ever, against the 30 free ones. Counted when it is first collected, then free to export and send</td>
+            <td>Our licence sheet</td>
+          </tr>
+          <tr>
+            <td>PayPal subscription ID</td>
+            <td>Links a payment to your account and keeps access open</td>
+            <td>Our licence sheet</td>
+          </tr>
+          <tr>
+            <td>Your emails and replies</td>
+            <td>Sending offers and stopping a sequence when someone answers</td>
+            <td>Your Gmail account only</td>
+          </tr>
+          <tr>
+            <td>Settings and campaigns</td>
+            <td>Your name, phone, signature, templates and terms</td>
+            <td>Your browser and your Google Sheet</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">We never receive the contents of your mailbox, your contacts, or the agent list you build.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">03</span>Google account access</h2>
+    <p>When you connect your Google account, the extension asks only for what it needs to do the job you asked for:</p>
+    <ul>
+      <li><code>drive.file</code> and Sheets access, limited to the spreadsheet and the letter-of-intent document that the extension itself creates for you.</li>
+      <li><code>openid</code> and <code>email</code>, to read the address of the account you signed in with.</li>
+      <li>Gmail sending, used by the engine inside your own spreadsheet, so the offers leave your address and appear in your Sent folder.</li>
+    </ul>
+    <p>Google user data obtained through these scopes is used only to provide the features described here. It is not transferred to anyone else, not used for advertising, and not used to train any model. You can disconnect at any time at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">04</span>Sites the extension contacts</h2>
+    <ul>
+      <li><strong>zillow.com</strong>: the pages you open yourself, to read the listings shown on them.</li>
+      <li><strong>dns.google</strong>: an MX lookup that checks whether an email domain actually accepts mail, before an address is marked valid.</li>
+      <li><strong>realtor.com</strong> and <strong>redfin.com</strong>: public property pages, looked up by the street address of the listing you collected, used when Zillow does not show a contact. This is how a rental posted by an apartment building or a management company gets a contact at all, since those listings have no agent profile on Zillow. Only the address is sent, and only the contact details the page publishes are read. A building page can list several agents, one per apartment, and all of them are kept on that row.</li>
+      <li><strong>The brokerage or agent website shown on a listing</strong>: off by default. The extension may open it only to look for a public contact address, and only after you turn on "Open brokerage websites" in Settings, which Chrome asks you to allow. Leave it off and emails are found from Zillow alone.</li>
+      <li><strong>googleapis.com</strong>: writing to your own Sheet and document.</li>
+      <li><strong>Our licence server</strong>, a Google Apps Script endpoint, which receives your Google email address and the number of listings used.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">05</span>Payment</h2>
+    <p>Payments are handled by PayPal. Card numbers and bank details are entered on PayPal's own pages and never reach us or the extension. We receive the subscription identifier, its status and the PayPal email address on the account, so an active subscription can be matched to the right user.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">06</span>How long it is kept</h2>
+    <p>Licence records are kept while your account exists and for as long as tax records require after a subscription ends. Everything else lives in your own Google account and your own browser, under your control, and is deleted when you clear the extension's data or delete the spreadsheet.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">07</span>Your choices</h2>
+    <ul>
+      <li>Clear all collected rows from the extension at any time with <strong>Clear data</strong>.</li>
+      <li>Ask us to delete your licence record by writing to the address below. It is removed within 30 days.</li>
+      <li>Stop the sending engine from the extension or from the sheet menu; no further mail leaves your account.</li>
+      <li>Revoke the extension's access to your Google account from your Google security settings.</li>
+      <li>On a row that holds several agents from one building, remove any address you do not want to contact before you add the row to a campaign. One message goes to the addresses left on the row.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">08</span>Responsible use</h2>
+    <p>The extension helps you reach real estate professionals about the properties they have publicly listed for sale or for rent. You are responsible for the content of your messages and for following the rules that apply where you and the recipient are, including CAN-SPAM in the United States. Every message carries your own mailing address and a working opt-out line, and an agent who replies with a removal request is added to an Opt Outs list that the engine never emails again.</p>
+    <p>A row for an apartment building can hold every agent who has an apartment listed there. They all receive the same single message and can see one another on it. Treat that like any other group email: write it as one message to the people listing at that address, and remove anyone you do not want on it before you send. An opt out from any one of them removes that address from every future message.</p>
+  </section>
+
+  <section>
+    <h2><span class="num">09</span>Changes</h2>
+    <p>If this policy changes, the effective date at the top changes with it, and any change that affects what is collected is announced in the extension before it takes effect.</p>
+  </section>
+
+  <footer>
+    <span>Or Habusha, Eilat, Israel</span>
+    <span>orhavusha01@gmail.com</span>
+  </footer>
+</div>
+</body>
+</html>
