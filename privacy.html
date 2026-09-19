@@ -221,9 +221,9 @@
     <h2><span class="num">04</span>Sites the extension contacts</h2>
     <ul>
       <li><strong>zillow.com</strong>: the pages you open yourself, to read the listings shown on them.</li>
-      <li><strong>dns.google</strong>: an MX lookup that checks whether an email domain actually accepts mail, before an address is marked valid.</li>
-      <li><strong>realtor.com</strong> and <strong>redfin.com</strong>: public property pages, looked up by the street address of the listing you collected, used when Zillow does not show a contact. This is how a rental posted by an apartment building or a management company gets a contact at all, since those listings have no agent profile on Zillow. Only the address is sent, and only the contact details the page publishes are read. A building page can list several agents, one per apartment, and all of them are kept on that row.</li>
-      <li><strong>The brokerage or agent website shown on a listing</strong>: off by default. The extension may open it only to look for a public contact address, and only after you turn on "Open brokerage websites" in Settings, which Chrome asks you to allow. Leave it off and emails are found from Zillow alone.</li>
+      <li><strong>dns.google</strong>: a technical check that an email domain accepts mail at all. Only the domain is sent, never a full address.</li>
+      <li><strong>realtor.com</strong> and <strong>redfin.com</strong>: public property pages. Only the address of a listing you collected is sent, and only the contact details the page publishes are read. Nothing is sent about you.</li>
+      <li><strong>The website a listing links to</strong>: off by default. The extension may open it only to read a public contact address, and only after you turn on "Open brokerage websites" in Settings, which Chrome asks you to allow.</li>
       <li><strong>googleapis.com</strong>: writing to your own Sheet and document.</li>
       <li><strong>Our licence server</strong>, a Google Apps Script endpoint, which receives your Google email address and the number of listings used.</li>
     </ul>
